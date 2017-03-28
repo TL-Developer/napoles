@@ -1,0 +1,22 @@
+{
+  "name": "napoles",
+  "version": "1.0.0",
+  "description": "Napoles",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TL-Developer/napoles.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TL-Developer/napoles/issues"
+  },
+  "homepage": "https://github.com/TL-Developer/napoles#readme",
+  "dependencies": {
+    "express": "^4.15.2"
+  }
+}
