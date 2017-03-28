@@ -1,0 +1,826 @@
+<div class="geral" style="background: black; width: 100%;position: absolute;">
+
+  <div class="loading" style="display:none;background: rgba(255,255,255,0.95);width: 100%;position: absolute; z-index: 50;height: 100%;">
+    <div class="imagem" style="margin: 20% auto;text-align:center;">
+      <img src="img/loading.gif" alt="">
+    </div>
+  </div>
+
+  <div class="modal fade modalFinal" tabindex="-1" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Recebemos seu pedido!</h4>
+      </div>
+      <div class="modal-body">
+        <p>{{mensagem}}</p>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+  <div class="container">
+
+    <!-- 1ª ETAPA -->
+    <div class="row dadosEndereco" ng-hide="etapa1">
+
+      <div class="col-md-6 col-md-offset-3" style="background: white; margin-top: 5%;border-radius: 10px;">
+
+        <form ng-submit="enviaEndereco(this)">
+
+          <div class="selecione-bairro" style="margin-bottom: 10px; border-bottom: 1px solid #ccc;">
+            <h3 class="text-center">Descubra seu bairro com delivery</h3>
+            <div class="form-group">
+              <select name="bairro" id="bairro" class="form-control" ng-model="bairro" ng-options="bairro as bairro.nome for bairro in bairros track by bairro.nome" ng-change="selectBairro(bairro.valor)" required>
+              <option value="">-- Selecione seu bairro --</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="endereco" style="margin-bottom: 10px;">
+            <h3 class="text-center">Qual endereço de entega?</h3>
+            <div class="form-group">
+              <div class="row">
+
+                <div class="col-md-6">
+                  <input type="text" id="cep" name="cep" ng-model="cep" class="form-control" placeholder="CEP" ng-blur="getCep(cep)" required>
+                </div>
+
+                <div class="col-md-6">
+                  <input type="text" id="complemento" name="complemento" class="form-control" placeholder="Complemento" ng-model="complemento" required>
+                </div>
+
+              </div>
+
+              <br />
+
+              <div class="form-group">
+
+                <div class="row">
+                  <div class="col-md-12">
+                    <input type="text" id="referencia" name="referencia" class="form-control" placeholder="Ponto de referencia" ng-model="referencia" required>
+                  </div>
+                </div>
+
+              </div>
+
+              <div class="form-group">
+                <div class="row">
+
+                  <div class="col-md-9">
+                    <input type="text" id="endereco" name="endereco" class="form-control" placeholder="Endereço" ng-model="endereco" required>
+                  </div>
+
+                  <div class="col-md-3">
+                    <input type="text" id="numero" name="numero" class="form-control" placeholder="Nº" ng-model="numero" required>
+                  </div>
+                </div>
+              </div>
+
+
+              <div class="form-group">
+                <div class="row">
+
+                  <div class="col-md-9">
+                    <input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" ng-model="cidade" required>
+                  </div>
+
+                  <div class="col-md-3">
+                    <input type="text" id="uf" name="uf" class="form-control" placeholder="UF" ng-model="uf" required>
+                  </div>
+
+                </div>
+              </div>
+
+              <input type="submit" value="PROXIMO!" class="btn btn-block btn-primary">
+
+            </div>
+          </div>
+        </form>
+
+      </div>
+    </div>
+      <!-- END: 1ª ETAPA -->
+
+
+      <!-- 2ª ETAPA -->
+      <div class="row dadosCliente">
+
+        <div class="col-md-6 col-md-offset-3" style="background: white; margin-top: 5%;border-radius: 10px;">
+
+          <form ng-submit="enviaDados(this)">
+
+            <div class="dados" style="margin-bottom: 10px;">
+              <h3 class="text-center">Digite seus dados</h3>
+              <div class="form-group">
+                <div class="row">
+
+                  <div class="col-md-12">
+                    <input type="text" id="nome" name="nome" class="form-control" placeholder="Nome" ng-model="nome" required>
+                  </div>
+                </div>
+
+                <br />
+
+                <div class="form-group">
+                  <div class="row">
+
+                    <div class="col-md-6">
+                      <label for="telefone">Ex:11-25855522</label>
+                      <input type="text" id="telefone" name="telefone" class="form-control" placeholder="Telefone" ng-model="telefone" required pattern="^[1-9]{2}\-[2-9][0-9]{7,8}$">
+                    </div>
+
+                    <div class="col-md-6">
+                      <label for="celular">Ex:11-958995522</label>
+                      <input type="text" id="celular" name="celular" class="form-control" placeholder="Celular" ng-model="celular" required pattern="^[1-9]{2}\-[2-9][0-9]{7,8}$">
+                    </div>
+                  </div>
+                </div>
+
+                <input type="submit" value="AGORA VAMOS FAZER O PEDIDO!" class="btn btn-block btn-primary">
+
+              </div>
+            </div>
+          </form>
+
+          </div>
+        </div>
+        <!-- END: 2ª ETAPA -->
+
+
+    </div>
+    <!-- FIM CONTAINER -->
+
+    <!-- 3ª ETAPA PEDIDO -->
+    <div class="row dadosPedido" style="padding-left: 2%;padding-right: 0.8%;">
+      <div class="col-md-8 col-xs-12 col-sm-8 col-lg-8" style="background: white; border-radius: 10px; margin-top: 2%;">
+
+        <div class="col-md-12" style="background: white; border-radius: 10px;">
+
+          <ul class="nav nav-tabs" role="tablist" style="margin-top: 2%;">
+            <li role="presentation" class="active"><a href="#pizzas" aria-controls="home" role="tab" data-toggle="tab">Pizzas</a></li>
+            <li role="presentation"><a href="#pizzasDoces" aria-controls="home" role="tab" data-toggle="tab">Pizzas doces</a></li>
+            <li role="presentation"><a href="#esfihas" aria-controls="esfihas" role="tab" data-toggle="tab">Esfihas</a></li>
+            <li role="presentation"><a href="#esfihasDoces" aria-controls="esfihasDoces" role="tab" data-toggle="tab">Esfihas doces</a></li>
+            <li role="presentation"><a href="#beirutes" aria-controls="sucos" role="tab" data-toggle="tab">Beirutes</a></li>
+            <li role="presentation"><a href="#bebidas" aria-controls="bebidas" role="tab" data-toggle="tab">Bebidas</a></li>
+          </ul>
+
+          <!-- Tab panes -->
+          <div class="tab-content" style="margin-top: 5%; height: 500px; overflow-y: scroll; overflow-x: hidden;">
+
+            <!-- PAINEL DE PIZZAS -->
+            <div role="tabpanel" class="tab-pane active" id="pizzas">
+
+              <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Filtrar Pizza" ng-model="buscarPizza"><br />
+              </div>
+
+              <table class="table">
+                <thead>
+                 <tr>
+                   <th>Sabores</th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                 </tr>
+                </thead>
+                <tbody class="conteudo-pizzas">
+                  <tr ng-repeat="pizza in pizzas | filter: buscarPizza">
+                    <td>{{pizza.nome}} <br /><small>{{pizza.descricao}}</small></td>
+                    <td><b>Broto</b><br />R${{pizza.valorBroto}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaBroto(pizza)"></span></td>
+                    <td><b>Meia</b><br />R${{pizza.valorGrande}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}meia" ng-click="enviaPizza(pizza)"></span></td>
+                    <td><b>Grande</b><br />R${{pizza.valorGrande}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizza._id}}" ng-click="enviaPizza(pizza)"></span></td>
+                  </tr>
+              </tbody>
+
+            </table>
+
+            <!-- MODAL -->
+            <div ng-repeat="pizza in pizzas" class="modal fade" id="{{pizza._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Pizza - </b>{{pizza.nome}}</h4></h4>
+                  </div>
+                  <div class="modal-body">
+                    <form ng-submit="adicionaPedido(this, 'pizza')">
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="Quantidade" class="control-label">Quantas pizzas?</label>
+                            <input type="number" class="form-control" value="1" ng-model="qtd">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="recipient-name" class="control-label">Adicione a borda:</label>
+                            <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)" required>
+                            <option value="">-- Selecione a borda --</option>
+                             </select>
+                             <input type="text" ng-model="valorBorda" style="display: none;">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="message-text" class="control-label">Observações do pedido(opicional):</label>
+                        <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-block">PRONTO!</button>
+                      </div>
+
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+            <!-- MODAL MEIA-->
+            <div ng-repeat="pizza in pizzas" class="modal fade" id="{{pizza._id}}meia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Selecione suas opções de pizzas</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form name="form" ng-submit="adicionaPedido(this, 'pizza', 'meia')">
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>1ª Opção</label>
+                            <input type="text" value="{{pizza.nome}}" ng-model="pizza.nome" disabled class="form-control">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>2ª Opção</label> <br />
+                              <select name="pizzas" id="pizzas" class="form-control" ng-model="meia.pizza" required>
+                                <option value="" disabled>-- Selecione a 2ª opção --</option>
+
+                                <option value="" disabled style="font-weight: bold; font-size: 18px; text-align: center;">******** PIZZAS DOCES ********</option>
+                                <option value="{{pizza}}" ng-repeat="pizza in pizzasDoces">{{pizza.nome}} - R${{pizza.valorGrande}}</option>
+
+                                <option value="" disabled style="font-weight: bold; font-size: 18px; text-align: center;">******** PIZZAS TRADICIONAIS ********</option>
+                                <option value="{{pizza}}" ng-repeat="pizza in pizzas">{{pizza.nome}} - R${{pizza.valorGrande}}</option>
+
+                              </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="Quantidade" class="control-label">Quantas pizzas?</label>
+                            <input type="number" class="form-control" value="1" ng-model="qtd">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="recipient-name" class="control-label">Adicione a borda:</label>
+                            <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)" required>
+                            <option value="">-- Selecione a borda --</option>
+                             </select>
+                             <input type="text" ng-model="valorBorda" style="display: none;">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="message-text" class="control-label">Observações do pedido(opicional):</label>
+                        <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-block">PRONTO!</button>
+                      </div>
+
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+            </div>
+            <!-- PAINEL DE PIZZAS DOCES -->
+            <div role="tabpanel" class="tab-pane" id="pizzasDoces">
+
+              <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Filtrar Pizza" ng-model="buscarPizzaDoce"><br />
+              </div>
+
+              <table class="table">
+                <thead>
+                 <tr>
+                   <th>Sabores</th>
+                   <th></th>
+                   <th></th>
+                   <th></th>
+                 </tr>
+                </thead>
+                <tbody class="conteudo-pizzasDoces">
+                  <tr ng-repeat="pizzaDoce in pizzasDoces | filter: buscarPizzaDoce">
+                    <td>{{pizzaDoce.nome}} <br /><small>{{pizzaDoce.descricao}}</small></td>
+                    <td><b>Broto</b><br />R${{pizzaDoce.valorBroto}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaBroto(pizzaDoce)"></span></td>
+                    <td><b>Meia</b><br />R${{pizzaDoce.valorGrande}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}meia" ng-click="enviaPizza(pizzaDoce)"></span></td>
+                    <td><b>Grande</b><br />R${{pizzaDoce.valorGrande}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{pizzaDoce._id}}" ng-click="enviaPizza(pizzaDoce)"></span></td>
+                  </tr>
+              </tbody>
+
+            </table>
+
+            <!-- MODAL -->
+            <div ng-repeat="pizzaDoce in pizzasDoces" class="modal fade" id="{{pizzaDoce._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Pizza doce - </b>{{pizzaDoce.nome}}</h4></h4>
+                  </div>
+                  <div class="modal-body">
+                    <form name="form" ng-submit="adicionaPedido(this, 'pizza')">
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="Quantidade" class="control-label">Quantas pizzas?</label>
+                          <input type="number" class="form-control" value="1" ng-model="qtd">
+                        </div>
+                      </div>
+
+                      <div class="col-md-6">
+                        <div class="form-group">
+                          <label for="recipient-name" class="control-label">Adicionar borda:</label>
+                          <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)" required>
+                          <option value="">-- Selecione a borda --</option>
+                           </select>
+                           <input type="text" ng-model="valorBorda" style="display: none;">
+                        </div>
+                      </div>
+                      <div class="form-group">
+                        <label for="message-text" class="control-label">Observações do pedido(opicional):</label>
+                        <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-block" ng-show="borda">PRONTO!</button>
+                      </div>
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+            <!-- MODAL MEIA-->
+            <div ng-repeat="pizzaDoce in pizzasDoces" class="modal fade" id="{{pizzaDoce._id}}meia" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+              <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="exampleModalLabel">Selecione suas opções de pizzas</h4>
+                  </div>
+                  <div class="modal-body">
+                    <form name="form" ng-submit="adicionaPedido(this, 'pizza', 'meia')">
+
+                      <div class="row">
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>1ª Opção</label>
+                            <input type="text" value="{{pizzaDoce.nome}}" ng-model="pizzaDoce.nome" disabled class="form-control">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label>2ª Opção</label>
+                            <select name="pizzasDoces" id="pizzasDoces" class="form-control" ng-model="meia.pizza" required>
+                            <option value="" disabled>-- Selecione a 2ª opção --</option>
+
+                            <option value="" disabled style="font-weight: bold; font-size: 18px; text-align: center;">******** PIZZAS TRADICIONAIS ********</option>
+                            <option value="{{pizza}}" ng-repeat="pizza in pizzas">{{pizza.nome}} - R${{pizza.valorGrande}}</option>
+
+                            <option value="" disabled style="font-weight: bold; font-size: 18px; text-align: center;">******** PIZZAS DOCES ********</option>
+                            <option value="{{pizzaDoce}}" ng-repeat="pizzaDoce in pizzasDoces">{{pizzaDoce.nome}} - R${{pizzaDoce.valorGrande}}</option>
+                            </select>
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="Quantidade" class="control-label">Quantas pizzas?</label>
+                            <input type="number" class="form-control" value="1" ng-model="qtd">
+                          </div>
+                        </div>
+
+                        <div class="col-md-6">
+                          <div class="form-group">
+                            <label for="recipient-name" class="control-label">Adicione a borda:</label>
+                            <select name="borda" id="borda" class="form-control" ng-model="borda" ng-options="borda as borda.nome for borda in bordas" ng-change="selectBorda(borda.valor)" required>
+                            <option value="">-- Selecione a borda --</option>
+                             </select>
+                             <input type="text" ng-model="valorBorda" style="display: none;">
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="form-group">
+                        <label for="message-text" class="control-label">Observações do pedido(opicional):</label>
+                        <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                      </div>
+
+                      <div class="modal-footer">
+                        <button type="submit" class="btn btn-primary btn-block">PRONTO!</button>
+                      </div>
+
+                    </form>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+
+
+            </div>
+
+
+            <!-- PAINEL DE ESFIHAS -->
+            <div role="tabpanel" class="tab-pane" id="esfihas">
+
+              <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Filtrar Esfihas" ng-model="buscarEsfiha"><br />
+              </div>
+
+              <table class="table">
+                <thead>
+                 <tr>
+                   <th>Sabores</th>
+                   <th>Valor</th>
+                 </tr>
+                </thead>
+
+                <tbody class="conteudo-esfihas">
+                  <tr ng-repeat="esfiha in esfihas | filter: buscarEsfiha">
+                    <td>{{esfiha.nome}} <br /><small>{{esfiha.descricao}}</small></td>
+                    <td>{{esfiha.valor}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{esfiha._id}}" ng-click="enviaEsfiha(esfiha)"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- MODAL -->
+              <div ng-repeat="esfiha in esfihas" class="modal fade" id="{{esfiha._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">Esfiha - </b>{{esfiha.nome}}</h4></h4>
+                    </div>
+                    <div class="modal-body">
+                      <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="Quantidade" class="control-label">Quantas esfihas?</label>
+                            <input type="number" class="form-control" value="1" ng-model="qtd">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">Observações do pedido(opicional):</label>
+                          <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary btn-block">PRONTO!</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+            <!-- PAINEL DE ESFIHAS DOCES -->
+            <div role="tabpanel" class="tab-pane" id="esfihasDoces">
+
+              <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Filtrar Esfihas" ng-model="buscarEsfihaDoce"><br />
+              </div>
+
+              <table class="table">
+                <thead>
+                 <tr>
+                   <th>Sabores</th>
+                   <th>Valor</th>
+                 </tr>
+                </thead>
+
+                <tbody class="conteudo-esfihas">
+                  <tr ng-repeat="esfiha in esfihasDoces | filter: buscarEsfihaDoce">
+                    <td>{{esfiha.nome}} <br /><small>{{esfiha.descricao}}</small></td>
+                    <td>{{esfiha.valor}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{esfiha._id}}" ng-click="enviaEsfiha(esfiha)"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- MODAL -->
+              <div ng-repeat="esfiha in esfihasDoces" class="modal fade" id="{{esfiha._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">Esfiha - </b>{{esfiha.nome}}</h4></h4>
+                    </div>
+                    <div class="modal-body">
+                      <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
+                        <div class="col-md-12">
+                          <div class="form-group">
+                            <label for="Quantidade" class="control-label">Quantas esfihas?</label>
+                            <input type="number" class="form-control" value="1" ng-model="qtd">
+                          </div>
+                        </div>
+
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">Observações do pedido(opicional):</label>
+                          <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary btn-block">PRONTO!</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PAINEL DE BEIRUTES -->
+            <div role="tabpanel" class="tab-pane" id="beirutes">
+
+              <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Filtrar Beirutes" ng-model="buscarBeirutes"><br />
+              </div>
+
+              <table class="table">
+                <thead>
+                 <tr>
+                   <th>Sabores</th>
+                   <th>Valor</th>
+                 </tr>
+                </thead>
+
+                <tbody class="conteudo-sucos">
+                  <tr ng-repeat="beirute in beirutes | filter: buscarBeirutes">
+                    <td>{{beirute.nome}} <br /><small>{{beirute.descricao}}</small></td>
+                    <td>{{beirute.valor}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{beirute._id}}" ng-click="enviaBeirute(beirute)"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- MODAL -->
+              <div ng-repeat="beirute in beirutes" class="modal fade" id="{{beirute._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">Beirute - </b>{{beirute.nome}}</h4></h4>
+                    </div>
+                    <div class="modal-body">
+                      <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
+                        <div class="form-group">
+                          <label for="Quantidade" class="control-label">Quantos beirutes?</label>
+                          <input type="number" class="form-control" value="1" ng-model="qtd">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">Observações do pedido(opicional):</label>
+                          <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary btn-block">PRONTO!</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PAINEL DE BEBIDAS -->
+            <div role="tabpanel" class="tab-pane" id="bebidas">
+
+              <div class="col-md-12">
+                <input type="text" class="form-control" placeholder="Filtrar Bebidas" ng-model="buscarBebidas"><br />
+              </div>
+
+              <table class="table">
+                <thead>
+                 <tr>
+                   <th>Sabores</th>
+                   <th>Valor</th>
+                 </tr>
+                </thead>
+
+                <tbody class="conteudo-bebidas">
+                  <tr ng-repeat="bebida in bebidas | filter: buscarBebidas">
+                    <td>{{bebida.nome}} <br /><small>{{bebida.descricao}}</small></td>
+                    <td>{{bebida.valor}} <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" data-toggle="modal" data-target="#{{bebida._id}}" ng-click="enviaBebida(bebida)"></span></td>
+                  </tr>
+                </tbody>
+              </table>
+
+              <!-- MODAL -->
+              <div ng-repeat="bebida in bebidas" class="modal fade" id="{{bebida._id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title" id="exampleModalLabel">Bebida - </b>{{bebida.nome}}</h4></h4>
+                    </div>
+                    <div class="modal-body">
+                      <form name="form" ng-submit="adicionaPedido(this, 'esfiha')">
+                        <div class="form-group">
+                          <label for="Quantidade" class="control-label">Quantas bebidas?</label>
+                          <input type="number" class="form-control" value="1" ng-model="qtd">
+                        </div>
+
+                        <div class="form-group">
+                          <label for="message-text" class="control-label">Observações do pedido(opicional):</label>
+                          <textarea class="form-control" id="message-text" ng-model="observacoes"></textarea>
+                        </div>
+
+                        <div class="modal-footer">
+                          <button type="submit" class="btn btn-primary btn-block">PRONTO!</button>
+                        </div>
+                      </form>
+                    </div>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+      <!-- Tab panes -->
+
+      <div class="col-md-4 col-xs-12 col-sm-4 col-lg-4" style="margin-top: 2%;">
+
+        <div class="col-md-12" style="background: white; border-radius: 10px;">
+          <div class="col-md-12">
+            <h3 style="color: #ccc;">Seu pedido</h3>
+            <hr />
+          </div>
+
+        <div class="col-md-12 panel panel-default" ng-repeat="subpedido in subpedidos">
+          <div class="col-md-12">
+            <h4><span class="badge" style="background: green;">{{subpedido.qtd}}</span> <b>{{subpedido.nome}}</b></h4>
+            <small>
+              <span ng-show="subpedido.observacoes"><b>*Obs.:</b> {{subpedido.observacoes}}<br /></span>
+              <span ng-show="subpedido.borda.nome"><b>*Extras:</b> {{subpedido.borda.nome}} - <b>R${{subpedido.valorBorda}}</b></span>
+            </small>
+          </div>
+
+          <div class="col-md-12" style="margin-top: 3%;">
+            <div class="col-md-6" style="margin:0;padding:0;">
+              <span class="fa fa-minus-circle fa-2x" style="color: red;cursor: pointer;" ng-click="removeSubPedido(subpedido)"></span>
+              <span class="fa fa-plus-circle fa-2x" alt="Adicionar Pedido" style="color: green;cursor: pointer;" ng-click="addQtdSubPedido(subpedido)"></span>
+            </div>
+
+            <div class="col-md-6">
+              <h4 class="text-right">R$ {{subpedido.valor}}</h4>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="text-left" style="color: #9b9b9b;">Sub total</h5>
+          </div>
+          <div class="col-md-6">
+            <h5 class="text-right" style="color: #9b9b9b;">R$ {{subTotal}}</h5>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h5 class="text-left" style="color: #9b9b9b;">Taxa de entrega</h5>
+          </div>
+          <div class="col-md-6">
+            <h5 class="text-right" style="color: #9b9b9b;">R$ {{taxaEntrega}}</h5>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6">
+            <h3 class="text-left">Total</h3>
+          </div>
+          <div class="col-md-6">
+            <h3 class="text-right">R$ {{valorTotal}}</h3>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12">
+            <button type="button" class="btn btn-success btn-block btn-lg" style="margin-bottom: 3%;" data-toggle="modal" data-target="#formaPg" ng-click="enviarSubPedido()" ng-disabled="trueSubPedidos">FAZER PEDIDO!</button>
+          </div>
+        </div>
+
+
+        <!-- MODAL -->
+        <div class="modal fade" id="formaPg" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="exampleModalLabel">Tipo de pagamento na entrega</h4></h4>
+              </div>
+              <div class="modal-body">
+                <form name="form" ng-submit="enviarPedido(this)">
+                  <div class="form-group">
+                    <select name="formaPagamento" id="formaPagamento" class="form-control" ng-model="formaPagamento" ng-options="pagamento as pagamento.nome for pagamento in pagamentos track by pagamento.nome" ng-change="formaDePg(formaPagamento)" required>
+                    <option value="">-- Selecione o tipo --</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group" ng-show="dinheiro">
+                    <label for="troco">Troco para quanto?</label>
+                    <input type="text" ng-model="troco" id="troco" class="form-control input-dinheiro" placeholder="ex: troco para 50,00">
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h5 class="text-left" style="color: #9b9b9b;">Sub total</h5>
+                    </div>
+                    <div class="col-md-6">
+                      <h5 class="text-right" style="color: #9b9b9b;">R$ {{subTotal}}</h5>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h5 class="text-left" style="color: #9b9b9b;">Taxa de entrega</h5>
+                    </div>
+                    <div class="col-md-6">
+                      <h5 class="text-right" style="color: #9b9b9b;">R$ {{taxaEntrega}}</h5>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-md-6">
+                      <h3 class="text-left">Total</h3>
+                    </div>
+                    <div class="col-md-6">
+                      <h3 class="text-right">R$ {{valorTotal}}</h3>
+                    </div>
+                  </div>
+
+
+                  <div class="modal-footer">
+                    <button type="submit" class="btn btn-primary btn-block btn-lg">FAZER MEU PEDIDO AGORA!</button>
+                  </div>
+                </form>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+      </div>
+    </div>
+    <!-- FIM: 3ª ETAPA PEDIDO -->
+
+
+  <script>
+
+  $('.nav-tabs li a').click(function (e) {
+    e.preventDefault()
+    $(this).tab('show')
+  })
+
+  </script>
+  </div>
+</div>
+

@@ -1,0 +1,1075 @@
+.pedirOnline{
+    cursor: pointer;
+}
+
+.modalPedir{
+    width: 100%;
+    /*height: 1100px;*/
+    background: none rgba(0,0,0,0.8);
+    position: absolute;
+    z-index: 10;
+    display: none;
+}
+
+.modalPedir .close{
+    position: absolute;
+    right: 2%;
+    top: 2%;
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    font-size: 60px;
+    font-family: arial;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+a {
+    border: medium none;
+    color: inherit;
+    text-decoration: none;
+}
+a:link {
+    border: medium none;
+    color: inherit;
+    text-decoration: none;
+}
+a:active {
+    text-decoration: none;
+}
+a:visited {
+    color: inherit;
+    text-decoration: none;
+}
+a:hover {
+    color: inherit;
+    text-decoration: underline;
+}
+img {
+    border: 0 none;
+}
+body {
+    background: rgba(0, 0, 0, 0) url("../images/body_background.png") no-repeat scroll center top;
+    margin: 0;
+}
+#total {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+#conteudo {
+    background: rgba(0, 0, 0, 0) url("../images/bg_conteudo.png") no-repeat scroll 0 0;
+    margin: 0 auto;
+    min-height: 1020px;
+    width: 975px;
+}
+#topo {
+    background: rgba(0, 0, 0, 0) url("../images/topo/bg_mascote.png") no-repeat scroll left center;
+    height: 137px;
+    margin: 0 auto;
+    width: 974px;
+}
+#logo-escrito-total {
+    height: 80px;
+    position: relative;
+    width: 100%;
+}
+#logo-escrito-total .phone {
+    bottom: 20px;
+    float: right;
+    position: absolute;
+    right: 5px;
+}
+#logo-escrito-total .phone img[alt="phone"] {
+    float: left;
+    margin: 5px 0;
+}
+#logo-escrito-total .phone h1 {
+    color: #fff;
+    float: right;
+    font-family: arial;
+    font-size: 30px;
+    padding-left: 10px;
+}
+.content-logo-escrito {
+    height: 100%;
+    margin: 0 220px;
+    width: 460px;
+}
+.escrito-napoles, .escrito-pizzaria {
+    color: #fff;
+    float: left;
+    font-family: Century Gothic;
+    font-size: 58px;
+    height: auto;
+    width: auto;
+}
+.escrito-pizzaria {
+    color: #96c05a;
+}
+#menu-nav {
+    float: left;
+    height: 56px;
+    margin: -500px 0;
+    width: 740px;
+}
+#menu-nav ul {
+    height: 56px;
+    margin: 0 146px;
+    width: 575px;
+}
+#menu-nav ul li {
+    color: #fff;
+    float: left;
+    font-family: arial;
+    font-size: 16px;
+    letter-spacing: -1px;
+    list-style: outside none none;
+    margin-left: 8px;
+    text-align: center;
+}
+.bg-bt {
+    background: rgba(0, 0, 0, 0) url("../images/topo/bg_botao.png") no-repeat scroll 0 0;
+    height: 25px;
+    margin: 32px 0;
+    transition: all 0.5s ease 0s;
+    width: 84px;
+}
+.bg-bt:hover {
+    height: 36px;
+    margin: 21px 0;
+}
+.bg-bt-selected {
+    background: rgba(0, 0, 0, 0) url("../images/topo/bg_botao_selected.png") no-repeat scroll 0 0;
+    height: 25px;
+    margin: 32px 0;
+    transition: all 0.5s ease 0s;
+    width: 84px;
+}
+.bg-bt-selected:hover {
+    height: 36px;
+    margin: 21px 0;
+}
+#faca-seu-pedido {
+    background: rgba(0, 0, 0, 0) url("../images/topo/faca_seu_pedido.png") no-repeat scroll center center;
+    float: right;
+    height: 68px;
+    margin: 0 5px 0 0;
+    width: 225px;
+}
+.content-faca-seu-pedido {
+    color: #fff;
+    font-family: arial;
+    font-size: 19px;
+    font-weight: bold;
+    margin: 18px 25px;
+    width: 180px;
+}
+#faca-seu-pedido:hover {
+    opacity: 0.8;
+}
+#banner-home {
+    height: 349px;
+    margin: 0 2px;
+    width: 970px;
+}
+.prev-banner-esq {
+    margin: 160px 10px;
+    opacity: 0.4;
+    position: absolute;
+    z-index: 7;
+}
+.prev-banner-dir {
+    margin: 160px 733px;
+    opacity: 0.4;
+    position: absolute;
+    z-index: 7;
+}
+#banner-esq {
+    float: left;
+    height: 322px;
+    margin: 10px auto;
+    overflow: hidden;
+    width: 79.5%;
+}
+#banner-dir {
+    float: left;
+    height: 387px;
+    margin: -60px auto;
+    overflow: hidden;
+    width: 20%;
+}
+#banner-dir img {
+    margin: 5px 10px;
+}
+#content-home {
+    margin: 0 auto;
+    width: 974px;
+}
+#content-home-carta-pizzas {
+    background: rgba(0, 0, 0, 0) url("../images/content-home/bg_content_carta_pizzas.png") no-repeat scroll 0 0;
+    height: 199px;
+    margin: 5px auto;
+    width: 945px;
+}
+#content-pizza-total {
+    float: left;
+    height: 199px;
+    margin: 0 5px;
+    width: 215px;
+}
+.titulo-carta-pizza {
+    color: #fff;
+    float: left;
+    font-family: arial;
+    font-size: 21px;
+    font-weight: bold;
+    height: auto;
+    margin: 20px 8px;
+    width: auto;
+}
+.titulo-qualidades {
+    color: #fff;
+    float: left;
+    font-family: arial;
+    font-size: 21px;
+    font-weight: bold;
+    height: auto;
+    margin: 20px 8px;
+    width: auto;
+}
+.descricao-carta-pizza {
+    color: #e1e1e1;
+    float: left;
+    font-family: arial;
+    font-size: 14px;
+    height: auto;
+    line-height: 1.5;
+    margin: 5px 8px;
+    width: auto;
+}
+.veja-mais-carta-pizza {
+    float: left;
+    height: auto;
+    margin: 15px 8px;
+    width: auto;
+}
+#content-pizza-total {
+    float: left;
+    height: 199px;
+    margin: 0 5px;
+    width: 215px;
+}
+#jcarousel-carta-pizza {
+    float: left;
+    height: 100%;
+    margin: 0 auto;
+    width: 974px;
+}
+#jcarousel-carta-pizza ul {
+    margin: 0 10px;
+    width: 970px;
+}
+#jcarousel-carta-pizza ul li {
+    float: left;
+    height: 150px;
+    margin: 40px 10px;
+    width: 330px;
+}
+#jcarousel-carta-pizza ul li img {
+    float: left;
+    margin: 0;
+    transition: all 0.5s ease-in-out 0s;
+}
+#jcarousel-carta-pizza ul li img:hover {
+    opacity: 0.5;
+}
+.titulo-content-carta-pizza {
+    color: #ffa800;
+    float: left;
+    font-family: arial;
+    font-size: 18px;
+    margin: 0;
+    width: 170px;
+}
+.subtitulo-content-carta-pizza {
+    color: #fff;
+    float: left;
+    font-family: arial;
+    font-size: 14px;
+    line-height: 1.5;
+    margin: 0;
+    width: 150px;
+}
+.descricao-content-carta-pizza {
+    color: #bfbfbf;
+    float: left;
+    font-family: arial;
+    font-size: 12px;
+    line-height: 1.5;
+    margin: 0;
+    width: 150px;
+}
+.bt-prev-carta-pizza {
+    margin: 95px 205px;
+    opacity: 0.4;
+    position: absolute;
+    z-index: 7;
+}
+.bt-next-carta-pizza {
+    margin: 95px 900px;
+    opacity: 0.4;
+    position: absolute;
+    z-index: 7;
+}
+#jcarousel-carta-vinhos {
+    float: left;
+    height: 100%;
+    margin: 0 auto;
+    width: 974px;
+}
+#jcarousel-carta-vinhos ul {
+    margin: 0 10px;
+    width: 970px;
+}
+#jcarousel-carta-vinhos ul li {
+    float: left;
+    height: 150px;
+    margin: 40px 10px;
+    width: 330px;
+}
+#jcarousel-carta-vinhos ul li img {
+    float: left;
+    margin: 0;
+    transition: all 0.5s ease-in-out 0s;
+}
+#jcarousel-carta-vinhos ul li img:hover {
+    opacity: 0.5;
+}
+.bt-prev-carta-vinhos {
+    margin: 95px 205px;
+    opacity: 0.4;
+    position: absolute;
+    z-index: 7;
+}
+.bt-next-carta-vinhos {
+    margin: 95px 900px;
+    opacity: 0.4;
+    position: absolute;
+    z-index: 7;
+}
+#content-redes-sociais {
+    height: 100px;
+    margin: 0 auto;
+    width: 974px;
+}
+.redes-sociais-img-esq {
+    float: left;
+    margin: 0 15px;
+    width: 763px;
+}
+#cl-dir-redes-sociais {
+    background: #ffd16f none repeat scroll 0 0;
+    border-radius: 5px;
+    float: left;
+    height: 79px;
+    margin: 0 -10px;
+    width: 174px;
+}
+#cl-dir-redes-sociais-quemsomos {
+    background: #ffd16f none repeat scroll 0 0;
+    border-radius: 5px;
+    float: left;
+    height: 79px;
+    margin: 0 8px;
+    width: 174px;
+}
+.icon-fb {
+    float: left;
+    margin: 25px 0;
+    opacity: 0.5;
+    padding: 0 15px;
+    transition: all 0.5s ease 0s;
+    width: 26px;
+}
+.icon-fb:hover {
+    opacity: 1;
+}
+#bloco-total-radius {
+    border-radius: 10px;
+    float: left;
+    height: 773px;
+    margin: 5px 10px;
+    overflow: hidden;
+    width: 762px;
+}
+#banner-cardapio {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #cccccc;
+    float: left;
+    height: 170px;
+    margin: 10px;
+    position: absolute;
+    width: 410px;
+}
+#banner-cardapio img {
+    margin: 8px;
+}
+#contato-cardapio {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #cccccc;
+    float: right;
+    height: 170px;
+    margin: 10px 10px 0;
+    position: relative;
+    width: 240px;
+}
+#contato-cardapio img {
+    float: left;
+    margin: 5px;
+}
+#contato-cardapio h2 {
+    color: #e71e26;
+    float: left;
+    font: bold 14px "arial";
+    min-width: 105px;
+    padding: 5px 0;
+}
+.paragrafo-contato {
+    color: #686767;
+    font: 12px "arial";
+}
+#total-box-topo-cardapio {
+    height: 195px;
+    position: relative;
+    width: 100%;
+}
+.background-red-cardapio {
+    background: #d31c28 url("../images/content-cardapio/faixa-branca-cardapio.png") no-repeat scroll 5px 10px;
+    border-radius: 10px 10px 0 0;
+    height: 28px;
+    width: 241px;
+}
+.background-red-cardapio h1 {
+    color: #fff;
+    font: bold 14px "arial";
+    padding: 10px 5px;
+}
+#box-content-cardapio-total {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #cccccc;
+    float: left;
+    margin: 0 10px;
+    position: relative;
+    width: 742px;
+}
+.background-red-content-cardapio {
+    background: #d31c28 url("../images/content-cardapio/faixa-branca-cardapio-content.png") no-repeat scroll 12px center;
+    border-radius: 10px 10px 0 0;
+    height: 35px;
+    width: 742px;
+}
+.background-red-content-cardapio h1 {
+    color: #fff;
+    font: bold 18px "arial";
+    padding: 10px;
+}
+.bg-gradient-content-cardapio {
+    background: rgba(0, 0, 0, 0) url("../images/content-cardapio/bg_gradient.png") no-repeat scroll 0 0;
+    border-radius: 10px;
+    float: left;
+    height: 250px;
+    margin: 10px;
+    width: 233px;
+}
+.bg-gradient-content-cardapio h1 {
+    color: #df2826;
+    font: bold 14px "arial";
+    padding: 15px 0;
+    text-align: center;
+    width: inherit;
+}
+.bg-gradient-content-cardapio img {
+    padding: 16px 44px;
+    text-align: center;
+    transition: all 0.5s ease 0s;
+}
+.bg-gradient-content-cardapio img[alt="efeito"]:hover {
+    opacity: 0.7;
+    text-align: center;
+}
+.bg-gradient-content-cardapio p {
+    color: #47433e;
+    font: bold 12px "Century Gothic";
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: inherit;
+}
+.bg-gradient-content-cardapio-2 {
+    background: rgba(0, 0, 0, 0) url("../images/content-cardapio/bg_gradient.png") no-repeat scroll 0 0;
+    border-radius: 10px;
+    float: left;
+    height: 250px;
+    margin: 10px 0;
+    width: 233px;
+}
+.bg-gradient-content-cardapio-2 h1 {
+    color: #df2826;
+    font: bold 14px "arial";
+    padding: 15px 0;
+    text-align: center;
+    width: inherit;
+}
+.bg-gradient-content-cardapio-2 img {
+    padding: 6px 44px;
+    text-align: center;
+    transition: all 0.5s ease 0s;
+}
+.bg-gradient-content-cardapio-2 img[alt="efeito"]:hover {
+    opacity: 0.7;
+    text-align: center;
+}
+.bg-gradient-content-cardapio-2 img[alt="efeito-bebidas"] {
+    margin: 0;
+    padding: 0 33px;
+    text-align: center;
+    transition: all 0.5s ease 0s;
+}
+.bg-gradient-content-cardapio-2 img[alt="efeito-bebidas"]:hover {
+    opacity: 0.7;
+    text-align: center;
+}
+.bg-gradient-content-cardapio-2 p {
+    color: #47433e;
+    font: bold 12px "Century Gothic";
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: inherit;
+}
+.bg-gradient-content-cardapio-3 {
+    background: rgba(0, 0, 0, 0) url("../images/content-cardapio/bg_gradient.png") no-repeat scroll 0 0;
+    border-radius: 10px;
+    float: left;
+    height: 250px;
+    margin: 10px;
+    width: 233px;
+}
+.bg-gradient-content-cardapio-3 h1 {
+    color: #df2826;
+    font: bold 14px "arial";
+    padding: 15px 0;
+    text-align: center;
+    width: inherit;
+}
+.bg-gradient-content-cardapio-3 img {
+    padding: 25px 44px;
+    text-align: center;
+    transition: all 0.5s ease 0s;
+}
+.bg-gradient-content-cardapio-3 img[alt="efeito"]:hover {
+    opacity: 0.7;
+    text-align: center;
+}
+.bg-gradient-content-cardapio-3 img[alt="efeito-vinhos"]:hover {
+    opacity: 0.7;
+    text-align: center;
+}
+.bg-gradient-content-cardapio-3 img[alt="efeito-vinhos"] {
+    margin: 0;
+    padding: 0 45px;
+    text-align: center;
+    transition: all 0.5s ease 0s;
+}
+.bg-gradient-content-cardapio-3 p {
+    color: #47433e;
+    font: bold 12px "Century Gothic";
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    width: inherit;
+}
+#bloco-total-dir {
+    float: left;
+    height: 770px;
+    margin: -45px 0;
+    width: 185px;
+}
+#banner-dir-cardapio {
+    float: left;
+    height: 308px;
+    margin: 0 10px;
+    overflow: hidden;
+    width: 170px;
+}
+#cartoes-full {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #cccccc;
+    float: left;
+    height: 260px;
+    margin: 10px 2px;
+    width: 187px;
+}
+.bg-red-cartoes-full {
+    background: #d31c28 url("../images/content-cardapio/faixa-branca-cartoes-full.png") no-repeat scroll 3px center;
+    border-radius: 10px 10px 0 0;
+    height: 25px;
+    margin: 0;
+    width: 188px;
+}
+.bg-red-cartoes-full h1 {
+    color: #ffffff;
+    font: bold 14px "arial";
+    padding: 8px 1px;
+}
+ul#ul-cartoes-full {
+    list-style: outside none none;
+    margin: 5px;
+    padding: 0;
+    position: absolute;
+    width: 185px;
+}
+ul#ul-cartoes-full li {
+    float: left;
+    padding-bottom: 5px;
+    padding-right: 18px;
+}
+ul#ul-cartoes-full li.left {
+    float: left;
+    text-align: left;
+}
+ul#ul-cartoes-full li.right {
+    float: right;
+    text-align: right;
+}
+#delivery-cardapio-full {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #cccccc;
+    float: left;
+    height: 200px;
+    margin: 10px 2px;
+    width: 187px;
+}
+.bg-delivery-full {
+    background: #d31c28 url("../images/content-cardapio/faixa-branca-cartoes-full.png") no-repeat scroll 3px center;
+    border-radius: 10px 10px 0 0;
+    height: 25px;
+    margin: 0;
+    width: 188px;
+}
+.bg-delivery-full h1 {
+    color: #ffffff;
+    font: bold 14px "arial";
+    padding: 8px 1px;
+}
+#delivery-cardapio-full h2 {
+    color: #8d0202;
+    font: 14px "arial";
+    text-align: center;
+    width: inherit;
+}
+#rodape {
+    height: auto;
+    margin: 0 auto;
+    width: 974px;
+}
+.content-rodape {
+    height: 40px;
+    margin: 0 auto;
+    width: 100%;
+}
+.content-rodape h1 {
+    color: #fff;
+    font-family: arial;
+    font-size: 14px;
+    font-weight: normal;
+    margin: 5px auto;
+    text-align: center;
+}
+.copyright {
+    color: #fff;
+    font-family: arial;
+    font-size: 10px;
+    font-weight: normal;
+    margin: 5px auto;
+    text-align: center;
+}
+.tl-logo {
+    margin: -19px 615px;
+    position: absolute;
+    transition: all 0.5s ease 0s;
+    width: 17px;
+}
+.tl-logo:hover {
+    margin: -22px 615px;
+}
+#box-content-cardapio-pizza-tradicional-total {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #cccccc;
+    float: left;
+    margin: 10px 10px 0;
+    position: relative;
+    width: 742px;
+}
+#box-content-cardapio-pizza-tradicional-total ul {
+    background: #d31c28 none repeat scroll 0 0;
+    color: #fff;
+    list-style: outside none decimal-leading-zero;
+    margin: 0;
+    padding: 0;
+    width: inherit;
+}
+#box-content-cardapio-pizza-tradicional-total li {
+    background: rgba(0, 0, 0, 0) url("../images/content-cardapio/pizzas-tradicionais/table-li.png") repeat-x scroll 0 0;
+    cursor: pointer;
+    margin: 0 32px;
+    padding: 5px 0;
+}
+#box-content-cardapio-pizza-tradicional-total li:hover {
+    background: #d31c28 none repeat scroll 0 0;
+}
+#box-content-cardapio-pizza-tradicional-total li h1 {
+    color: #e96268;
+    font-family: arial;
+    font-size: 14px;
+    text-indent: 5px;
+}
+#box-content-cardapio-pizza-tradicional-total ul p {
+    color: #737171;
+    cursor: text;
+    display: none;
+    font-family: arial;
+    font-size: 12px;
+    text-indent: 5px;
+}
+.pages-number {
+    background: #d31c28 none repeat scroll 0 0;
+    border-radius: 0 0 10px 10px;
+    float: left;
+    height: 30px;
+    margin: 0 10px;
+    width: 742px;
+}
+.pages-number ul {
+    float: left;
+    list-style: outside none none;
+    margin: 3px 255px;
+}
+.pages-number li {
+    background: #39b54a none repeat scroll 0 0;
+    float: left;
+    height: 25px;
+    margin-right: 5px;
+}
+.pages-number h1 {
+    color: #fff;
+    cursor: pointer;
+    font-family: arial;
+    font-size: 14px;
+    padding: 5px;
+}
+#box-content-cardapio-pizza-tradicional-total ul.page-number-2, #box-content-cardapio-pizza-tradicional-total ul.page-number-3, #box-content-cardapio-pizza-tradicional-total ul.page-number-4 {
+    display: none;
+}
+#bloco-total-contato {
+    float: left;
+    height: 773px;
+    margin: 0;
+    width: 774px;
+}
+#bloco-total-dir-contato {
+    float: left;
+    height: 770px;
+    margin: -45px 0;
+    width: 193px;
+}
+.banner-contato {
+    background: rgba(0, 0, 0, 0) url("../images/contato/banner.png") no-repeat scroll 0 0;
+    float: left;
+    height: 285px;
+    margin: 0 5px;
+    width: 750px;
+}
+.content-delivery {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 10px;
+    float: left;
+    height: 481px;
+    margin: 0 5px;
+    width: 750px;
+}
+.coluna-delivery-1 {
+    float: left;
+    height: 488px;
+    margin: 0 5px;
+    position: relative;
+}
+.coluna-delivery-1 p {
+    color: #848484;
+    font: 18px/23px "arial";
+    margin: 20px;
+}
+.coluna-delivery-2 {
+    float: left;
+    height: 488px;
+    margin: 0;
+}
+.coluna-delivery-2 img[alt="mapa"] {
+    margin: 20px 10px;
+}
+.banner-delivery {
+    background: rgba(0, 0, 0, 0) url("../images/content-delivery/banner.png") no-repeat scroll 0 0;
+    float: left;
+    height: 285px;
+    margin: 0 5px;
+    width: 750px;
+}
+.coluna-contato-1 {
+    float: left;
+    height: 488px;
+    margin: 0 5px;
+    position: relative;
+    width: 319px;
+}
+.coluna-contato-1 h1 {
+    color: #050a68;
+    font: 18px "arial";
+    margin: -11px 24px;
+    position: absolute;
+}
+.coluna-contato-1 .form-contato {
+    float: left;
+    margin: 10px 20px;
+    width: 275px;
+}
+.coluna-contato-1 .form-contato label {
+    color: #a80000;
+    float: left;
+    font: 14px "arial";
+    margin: 3px 0;
+    width: 100%;
+}
+.coluna-contato-1 .form-contato label.error {
+    color: #ff0000;
+    font: bold 12px "arial";
+    margin: 0;
+    padding: 0;
+}
+.coluna-contato-1 .form-contato .nome {
+    background: #f4f4f4 none repeat scroll 0 0;
+    border-radius: 8px;
+    color: #6c6c6c;
+    float: left;
+    font-family: arial;
+    font-size: 14px;
+    height: 23px;
+    width: 100%;
+}
+.coluna-contato-1 .form-contato .email {
+    background: #f4f4f4 none repeat scroll 0 0;
+    border-radius: 8px;
+    color: #6c6c6c;
+    float: left;
+    font-family: arial;
+    font-size: 14px;
+    height: 23px;
+    width: 100%;
+}
+.coluna-contato-1 .form-contato .tel, .coluna-contato-1 .form-contato .cidade {
+    background: #f4f4f4 none repeat scroll 0 0;
+    border-radius: 8px;
+    color: #6c6c6c;
+    float: left;
+    font-family: arial;
+    font-size: 14px;
+    height: 23px;
+    width: 100%;
+}
+.coluna-contato-1 .form-contato .input {
+    background: #f4f4f4 none repeat scroll 0 0;
+    border-radius: 8px;
+    color: #6c6c6c;
+    float: left;
+    font-family: arial;
+    font-size: 14px;
+    height: 23px;
+    width: 100%;
+}
+.coluna-contato-1 .form-contato input.endereco {
+    background: #f4f4f4 none repeat scroll 0 0;
+    border-radius: 8px;
+    color: #6c6c6c;
+    float: left;
+    font-family: arial;
+    font-size: 14px;
+    height: 23px;
+    width: 150px;
+}
+.coluna-contato-1 .form-contato label.endereco {
+}
+.coluna-contato-1 .form-contato label span {
+    color: #a80000;
+    float: right;
+    font: 14px "arial";
+    margin: 3px 0;
+    width: 100px;
+}
+.coluna-contato-1 .form-contato input.cep {
+    background: #f4f4f4 none repeat scroll 0 0;
+    border-radius: 8px;
+    color: #6c6c6c;
+    float: right;
+    font-family: arial;
+    font-size: 14px;
+    height: 23px;
+    width: 100px;
+}
+.coluna-contato-1 .form-contato .textarea {
+    background: #f4f4f4 none repeat scroll 0 0;
+    border-radius: 8px;
+    color: #6c6c6c;
+    float: left;
+    font-family: arial;
+    font-size: 14px;
+    height: 50px;
+    width: 100%;
+}
+.coluna-contato-1 .form-contato .button-reset {
+    background: rgba(0, 0, 0, 0) url("../images/contato/button.png") no-repeat scroll 0 0;
+    border: 0 none;
+    color: #ffffff;
+    cursor: pointer;
+    float: left;
+    font-family: arial;
+    font-size: 14px;
+    font-weight: bold;
+    height: 45px;
+    margin: 5px 0;
+    transition: all 1s ease 0s;
+    width: 109px;
+}
+.coluna-contato-1 .form-contato .button-reset:hover, .coluna-contato-1 .form-contato .button-enviar:hover {
+    background: rgba(0, 0, 0, 0) url("../images/contato/button_hover.png") no-repeat scroll 0 0;
+    color: #df2826;
+}
+.coluna-contato-1 .form-contato .button-enviar {
+    background: rgba(0, 0, 0, 0) url("../images/contato/button.png") no-repeat scroll 0 0;
+    border: 0 none;
+    color: #ffffff;
+    cursor: pointer;
+    float: right;
+    font-family: arial;
+    font-size: 14px;
+    font-weight: bold;
+    height: 45px;
+    margin: 5px 0;
+    transition: all 1s ease 0s;
+    width: 109px;
+}
+.coluna-contato-2 {
+    float: left;
+    height: 488px;
+    margin: 0 15px;
+    width: 425px;
+}
+.coluna-contato-2 .map-google-total {
+    border-radius: 10px;
+    box-shadow: 0 3px 3px 1px #8f7e58;
+    float: left;
+    height: 320px;
+    width: 740px;
+}
+.coluna-contato-2 .map-google {
+    background: #ffe09d none repeat scroll 0 0;
+    float: left;
+    height: 335px;
+    width: 740px;
+}
+.coluna-contato-2 p {
+    color: #6c6c6c;
+    font-family: arial;
+    font-size: 14px;
+    line-height: 19px;
+}
+.coluna-contato-2 span {
+    color: #8f0202;
+    font-family: arial;
+    font-size: 14px;
+    line-height: 19px;
+}
+#bloco-total-radius-quemsomos {
+    float: left;
+    height: 852px;
+    margin: 0 10px;
+    width: 762px;
+}
+.banner-contato-quemsomos {
+    background: rgba(0, 0, 0, 0) url("../images/content-quemsomos/banner.png") no-repeat scroll 0 0;
+    float: left;
+    height: 285px;
+    margin: 0 5px;
+    width: 750px;
+}
+.bloco-content-radius-quemsomos {
+    background: #fff none repeat scroll 0 0;
+    border-radius: 10px;
+    float: left;
+    height: 560px;
+    margin: 0 5px;
+    width: 762px;
+}
+.bloco-content-radius-quemsomos p {
+    color: #626060;
+    float: left;
+    font: 14px/21px "arial";
+    margin: 10px 25px;
+    width: 710px;
+}
+.bloco-content-radius-quemsomos span {
+    color: #ef656a;
+    font: 14px/23px "arial";
+}
+.content-jcarousel-quemsomos {
+    background: #8e0202 none repeat scroll 0 0;
+    border-radius: 10px;
+    float: left;
+    height: 186px;
+    margin: 0 25px;
+    width: 722px;
+}
+.content-jcarousel-quemsomos .btn-jcarousel-quemsomos-left {
+    cursor: pointer;
+    float: left;
+    margin: 40px 13px;
+}
+.content-jcarousel-quemsomos .btn-jcarousel-quemsomos-right {
+    cursor: pointer;
+    float: left;
+    margin: 40px 0;
+}
+.content-jcarousel-quemsomos ul {
+    float: left;
+    height: 165px;
+    list-style: outside none none;
+    margin: 3px 0;
+    width: 630px;
+}
+.content-jcarousel-quemsomos .jcarousel-quemsomos {
+    float: left;
+    margin: 10px;
+}
+.content-jcarousel-quemsomos li {
+    float: left;
+    height: 162px;
+    padding-right: 10px;
+    width: 200px;
+}
